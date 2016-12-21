@@ -6,7 +6,7 @@ const { RSVP, isEmpty, run } = Ember;
 
 export default DeviseAuthenticator.extend({
   session: Ember.inject.service('session'),
-  serverTokenEndpoint: `${config.apiHost}/auth/sign_in`,
+  serverTokenEndpoint: `${config.apiHost}/${config.apiNamespace}/auth/sign_in`,
 
   restore(data){
     return new RSVP.Promise((resolve, reject) => {
@@ -22,18 +22,21 @@ export default DeviseAuthenticator.extend({
   authenticate(identification, password) {
     return new RSVP.Promise((resolve, reject) => {
       const { identificationAttributeName } = this.getProperties('identificationAttributeName');
-      const data         = { password };
+      const data = { password };
       data[identificationAttributeName] = identification;
-
       this.makeRequest(data).then(function(response) {
-        var result = {
-          accessToken: response.headers.map['access-token'],
-          expiry: response.headers.map['expiry'],
-          tokenType: response.headers.map['token-type'],
-          uid: response.headers.map['uid'],
-          client: response.headers.map['client']
-        };
-        run(null, resolve, result);
+        if(response.status != 401) {
+          var result = {
+            accessToken: response.headers.map['access-token'],
+            expiry: response.headers.map['expiry'],
+            tokenType: response.headers.map['token-type'],
+            uid: response.headers.map['uid'],
+            client: response.headers.map['client']
+          };
+          run(null, resolve, result);
+        } else {
+          this.get('session').invalidate();
+        }
       }, function(xhr) {
         run(null, reject, xhr.responseJSON || xhr.responseText);
       });

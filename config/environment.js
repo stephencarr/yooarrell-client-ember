@@ -21,8 +21,12 @@ module.exports = function(environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
     },
-
-    apiHost: 'http://api.yooarrell.dev/v1/',
+    apiUrl: 'http://api.yooarrell.com/v1/',
+    apiHost: 'http://api.yooarrell.com',
+    apiNamespace: 'v1',
+    'ember-simple-auth': {
+      authorizer: 'authorizer:devise'
+    }
   };
 
   if (environment === 'development') {
@@ -31,6 +35,9 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.apiUrl = 'http://api.yooarrell.dev/v1/';
+    ENV.apiHost = 'http://api.yooarrell.dev';
+    ENV.apiNamespace = 'v1';
   }
 
   if (environment === 'test') {
@@ -45,7 +52,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    //
   }
 
   return ENV;
