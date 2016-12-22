@@ -35,7 +35,7 @@ export default DeviseAuthenticator.extend({
           };
           run(null, resolve, result);
         } else {
-          this.get('session').invalidate();
+          run(null, reject, result);
         }
       }, function(xhr) {
         run(null, reject, xhr.responseJSON || xhr.responseText);

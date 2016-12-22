@@ -1,0 +1,25 @@
+<main local-class="wrapper" class=" u-center-block">
+  <div class="u-center-block__content">
+    <h1 class="c-heading">Please Login</h1>
+    <form {{action 'authenticate' on='submit'}}>
+      <div class="o-form-element">
+          <div class="c-input-group c-input-group--stacked">
+              <div class="o-field">
+                  {{input id='identification' class='c-field' placeholder='Enter Login' value=identification}}
+              </div>
+              <div class="o-field">
+                  {{input id='password' class='c-field' placeholder='Enter Password' type='password' value=password}}
+              </div>
+          </div>
+      </div>
+      <div class="o-form-element">
+          <button class="c-button c-button--brand c-button--block" type="submit">Login</button>
+      </div>
+      {{#if errorMessage}}
+        <div local-class="errors">
+          <div class="u-centered u-color-error">{{errorMessage}}</div>
+        </div>
+      {{/if}}
+    </form>
+  </div>
+</main>

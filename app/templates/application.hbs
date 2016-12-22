@@ -1,15 +1,9 @@
-<div class="menu">
-  …
+{{log 'test' appCtrl}}
+<nav class="menu">
   {{#if session.isAuthenticated}}
     <a {{action 'invalidateSession'}}>Logout</a>
   {{else}}
     {{#link-to 'login'}}Login{{/link-to}}
   {{/if}}
-</div>
-<div class="main">
-  <h1>YooArrEll</h1>
-  <div>{{#link-to 'index'}}Index{{/link-to}}</div>
-  <div>{{#link-to 'links'}}Links{{/link-to}}</div>
-  {{outlet}}
-
-</div>
+</nav>
+{{ outlet }}

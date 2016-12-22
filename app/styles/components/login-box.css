@@ -1,0 +1,11 @@
+.wrapper {
+  height: 288px;
+  margin: auto;
+}
+
+.errors {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
