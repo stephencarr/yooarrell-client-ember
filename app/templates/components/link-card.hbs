@@ -1,0 +1,14 @@
+{{#if title url}}
+<div local-class="link-card" class="c-card {{if isHover 'u-high'}}">
+  <div class="c-card__item o-media">
+    <div class="o-media__body">
+      <h2 class="c-heading">{{title}}</h2>
+      <h3 local-class="subheading" class="c-heading__sub">{{url}}</h3>
+      <p class="c-paragraph">{{description}}</p>
+    </div>
+    <div class="o-media__image">
+      <img class="o-image" src="{{image_og}}"/>
+    </div>
+  </div>
+</div>
+{{/if}}

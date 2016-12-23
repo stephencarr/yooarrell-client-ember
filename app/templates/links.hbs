@@ -1,7 +1,1 @@
-<h2>Links</h2>
-<ul>
-  {{#each model as |link|}}
-    <li>{{#link-to "links.show" link}}{{link.title}}{{/link-to}}</li>
-  {{/each}}
-</ul>
-{{outlet}}
+{{link-list links=model}}

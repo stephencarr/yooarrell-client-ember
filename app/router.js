@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('login');
   this.route('links', function() {
     this.route('show', { path: '/:links_id' });
+    this.route('create');
   });
 });
 

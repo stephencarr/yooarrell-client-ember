@@ -1,0 +1,117 @@
+
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="//del.icio.us/static/css/reset.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="//del.icio.us/static/bookmarklet/css/reset.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="//del.icio.us/static/bookmarklet/css/bklet.css?0.634145465871" media="all" />
+    <link href="//del.icio.us/static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" ></script>
+    <script type="text/javascript" src="//del.icio.us/static/js/del_new.js" ></script>
+    <script type="text/javascript" src="//del.icio.us/static/js/fblogin_bookmarklet.js"></script>
+    <script type="text/javascript" src="//del.icio.us/static/js/gpluslogin_bookmarklet.js"></script>
+    <script type="text/javascript" src="//del.icio.us/static/js/twtrlogin_bookmarklet.js"></script>
+</head>
+
+<body>
+    <div class="notRegisterPan">
+        <div class="notRegisterTop">
+                <div class="logo">
+                <a href="http://del.icio.us" target="_blank">Delicious</a>
+            </div>
+        </div>
+    </div>
+<div id="DELI_bookmarklet_body">
+    <div class="socialMediaOuterWrapper login-social">
+	<a href="#" class="twtrlogin">
+	    <div class="socialMediaBlock twitterBlock">
+		<div class="socialIconPanel"><i class="fa fa-twitter"></i></div>
+		<div class="socialContent"><p>Sign in with <strong>Twitter</strong></p></div>
+	    </div>
+	</a>
+	<a href="#" class="fblogin">
+	    <div class="socialMediaBlock facebookBlock">
+		<div class="socialIconPanel"><i class="fa fa-facebook"></i></div>
+		<div class="socialContent"><p>Sign in with <strong>Facebook</strong></p></div>
+	    </div>
+	</a>
+	<a href="#" class="gpluslogin">
+	    <div class="socialMediaBlock googleplusBlock">
+		<div class="socialIconPanel"><i class="fa fa-google-plus"></i></div>
+		<div class="socialContent"><p>Sign in with <strong>Google+</strong></p></div>
+	    </div>
+	</a>
+    </div>
+    <div class="popupBottomCont"><!----></div>
+    <form id="DELI_link_info">
+	<div id="DELI_username" >
+		<span class="DELI_add_on">USERNAME or EMAIL</span>
+		<input type="text" tabindex=77/>
+	</div>
+	<div id="DELI_password"><span >PASSWORD</span>
+		<input type="password" tabindex=78/>
+	</div>
+    	<div id="DELI_error_info">Invalid conbination of username and password</div>
+
+    	<div id="DELI_banner">
+    		<a class="DELI_btn DELI_btn_primary DELI_btn_submit" id="DELI_sign_in" tabindex=79>Sign in</a>
+    	</div>
+
+        <div id="DELI_signup_info">New to Delicious? <a href="http://del.icio.us/register" target="_blank">Join Delicious.</a></div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+    (function($){
+        $('#DELI_username input').focus();
+
+        $('#DELI_link_info').keydown(function(e){
+			e.stopPropagation();
+			if (e.keyCode === 13) {$('#DELI_sign_in').click();}
+		});
+
+        $('#DELI_sign_in').click(function(e){
+            e.preventDefault();
+            var username = $('#DELI_username input').val(),
+                password = $('#DELI_password input').val();
+				//console.log('username='+username);
+            // url=encodeURIComponent(window.location.href);
+            // title=encodeURIComponent(document.title);
+            $.ajax({
+                url: '/bookmarklet_login',
+                data: { 'username': username, 'password': password},
+                type: 'POST',
+                dataType: 'json',
+                cache: false,
+                success: function(data) {
+		    if (data.status == 'success') {
+				//console.log('session='+data.session);
+				//console.log('redirect='+data.redirect);
+			var myDate = new Date();
+			myDate.setMonth(myDate.getMonth() + 12);
+			//console.log('MyDate='+myDate);
+			//var date = new Date();
+            //var minutes = 15;
+            //date.setTime(date.getTime() + (minutes * 60 * 1000));
+            //console.log('Date='+date);
+			document.cookie = data.session + ";expires=" + myDate + ";path=/;domain=.del.icio.us";
+			window.parent.postMessage('login_succeeded', '*');
+		    }
+		    else {
+                        $('#DELI_error_info').show(data.error_msgs);
+                    }
+                },
+                error: function(response) {
+                    $('#DELI_error_info').show(data.error_msgs);
+                    //alert('Unknown error, please try it later.');
+                }
+            });
+            return false;
+        });
+    })(jQuery);
+</script>
+</body>
+</html>
