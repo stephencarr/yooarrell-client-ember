@@ -21,11 +21,12 @@ module.exports = function(environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
     },
-    apiUrl: 'http://api.yooarrell.com/v1/',
-    apiHost: 'http://api.yooarrell.com',
+    apiUrl: 'https://api.yooarrell.com/v1/',
+    apiHost: 'https://api.yooarrell.com',
     apiNamespace: 'v1',
     'ember-simple-auth': {
-      authorizer: 'authorizer:devise'
+      authorizer: 'authorizer:devise',
+      authenticationRoute: 'login'
     }
   };
 
