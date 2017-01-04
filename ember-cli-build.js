@@ -2,6 +2,7 @@
 /* global require, module */
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 var autoprefixer = require('autoprefixer');
+var CssImport = require('postcss-import');
 
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
@@ -20,6 +21,9 @@ module.exports = function(defaults) {
             options: {
               browsers: ['last 2 version']
             }
+          },
+          {
+            module: CssImport,
           }
         ]
       }
