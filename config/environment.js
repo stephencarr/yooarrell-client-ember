@@ -39,6 +39,7 @@ module.exports = function(environment) {
     ENV.apiUrl = 'http://api.yooarrell.dev/v1/';
     ENV.apiHost = 'http://api.yooarrell.dev';
     ENV.apiNamespace = 'v1';
+    ENV.cookieDomain = "localhost";
   }
 
   if (environment === 'test') {
@@ -53,7 +54,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    //
+    ENV.cookieDomain = ".yooarrell.com";
   }
 
   return ENV;
