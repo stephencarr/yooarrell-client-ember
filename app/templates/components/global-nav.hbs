@@ -1,0 +1,5 @@
+<nav class="c-nav c-nav--inline">
+    {{#link-to 'index' class="c-nav__item c-text--loud"}}My Dashboard{{/link-to}}
+  <a {{action 'invalidateSession'}} class="c-nav__item c-nav__item--right"><i class="fa fa-user"></i> Logout</a>
+  {{#link-to 'links' class='c-nav__item c-nav__item--right'}}<i class="fa fa-bookmark"></i> Stashed Tabs{{/link-to}}
+</nav>

@@ -12,6 +12,8 @@ Router.map(function() {
     this.route('show', { path: '/:links_id' });
     this.route('create');
   });
+  this.route('not-found');
+  this.route('borked');
 });
 
 export default Router;

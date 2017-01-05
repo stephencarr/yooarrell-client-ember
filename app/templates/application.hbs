@@ -1,14 +1,13 @@
-{{#if session.isAuthenticated}}
-  <nav class="c-nav c-nav--inline">
-  	  {{#link-to 'index' class="c-nav__item c-text--loud"}}My Dashboard{{/link-to}}
-  	<a {{action 'invalidateSession'}} class="c-nav__item c-nav__item--right"><i class="fa fa-user"></i> Logout</a>
-    {{#link-to 'links' class='c-nav__item c-nav__item--right'}}<i class="fa fa-bookmark"></i> Stashed Tabs{{/link-to}}
-  </nav>
-  <div class="o-container o-container--xlarge o-grid o-grid--wrap o-grid--top o-grid--small-full o-grid--medium-full">
-    <div class="o-grid__cell o-grid__cell--width-80">
-      {{ outlet }}
-    </div>
+{{#if errorMessage}}
+  <div class="c-alert c-alert--error">
+    <button class="c-button c-button--close">×</button>
+    {{errorMessage}} {{errorDetails}}
   </div>
-{{else}}
-  {{login-box}}
+{{else if session.isAuthenticated}}
+  {{global-nav}}
 {{/if}}
+<div class="o-container o-container--xlarge o-grid o-grid--wrap o-grid--top o-grid--small-full o-grid--medium-full">
+  <div class="o-grid__cell o-grid__cell--width-100">
+    {{outlet}}
+  </div>
+</div>
