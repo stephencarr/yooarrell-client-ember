@@ -1,11 +1,39 @@
-.link-card {
-  cursor: pointer;
-
-  .subheading {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    min-width: 0;
+.link-card-wrap {
+  position: relative;
+  .link-button-delete {
+    position: absolute;
+    left: -0.8em;
+    top: 0.4em;
+    z-index: 1;
+    display: none;
+    width: 2em;
+    height: 2em;
+    line-height: 1em;
   }
-
+  &.hovered {
+    .link-button-delete {
+      display: inherit;
+    }
+  }
+  .link-card {
+    cursor: pointer;
+    position: relative;
+    .subheading {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: 0;
+    }
+    .o-media__image {
+      height: 5em;
+      width: 5em;
+      border-radius: 5px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size:cover;
+      img {
+        display: none;
+      }
+    }
+  }
 }

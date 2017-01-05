@@ -1,2 +1,45 @@
 @import 'components/link-card';
 @import 'components/login-box';
+
+.ember-hold-button.trash-circle {
+  border-radius: 50%;
+  border: 2px solid #882720;
+  background: #f44336;
+  color: #fff;
+  padding: 0;
+  z-index: 1;
+  .fa {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0.2em;
+    z-index: 1;
+  }
+}
+
+.ember-hold-button.trash-circle span {
+  font-size: 0;
+  background-color: #882720;
+  border-radius: 50%;
+  display: block;
+  height: 100%;
+  -webkit-transform: scale(0);
+      -ms-transform: scale(0);
+          transform: scale(0);
+  -webkit-transition-property: -webkit-transform;
+          transition-property: transform;
+  -webkit-transition-timing-function: linear;
+          transition-timing-function: linear;
+  width: 100%;
+}
+
+.ember-hold-button.trash-circle.is-holding span {
+  -webkit-transform: scale(1);
+      -ms-transform: scale(1);
+          transform: scale(1);
+}
+
+.ember-hold-button.trash-circle.is-complete span {
+  -webkit-transition: none;
+          transition: none;
+}

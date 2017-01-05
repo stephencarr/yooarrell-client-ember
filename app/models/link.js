@@ -6,5 +6,6 @@ export default DS.Model.extend({
   image_fav: DS.attr('string'),
   image_og: DS.attr('string'),
   title: DS.attr('string'),
-  url: DS.attr('string')
+  url: DS.attr('string'),
+  url_host: DS.attr('string')
 });

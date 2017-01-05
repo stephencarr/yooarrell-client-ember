@@ -1,16 +1,19 @@
 {{#if title url}}
-<div class="link-card c-card {{if isHover 'u-high'}}">
+{{#hold-button delay:2000 class="link-button-delete" type="trash-circle" action=(action "destroy" model bubbles=false)}}
+  <i class="fa fa-trash"></i>
+{{/hold-button}}
+<div class="link-card c-card {{if isHover 'u-high'}}" {{action "linkOut" model bubbles=false}}>
   <div class="c-card__item o-media">
     <div class="o-media__body">
       <h2 class="c-heading">{{title}}</h2>
       <h3 local-class="subheading" class="c-heading__sub">{{url}}</h3>
       <p class="c-paragraph">{{description}}</p>
     </div>
-    <div class="o-media__image">
-      {{#if image_og}}
+    {{#if image_og}}
+    <div class="o-media__image" style="background-image: url('{{image_og}}')">
       <img class="o-image" src="{{image_og}}"/>
-      {{/if}}
     </div>
+    {{/if}}
   </div>
 </div>
 {{/if}}
