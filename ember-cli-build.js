@@ -3,6 +3,7 @@
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 var autoprefixer = require('autoprefixer');
 var CssImport = require('postcss-import');
+var app = new EmberApp({});
 
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
