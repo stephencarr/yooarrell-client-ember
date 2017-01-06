@@ -1,0 +1,44 @@
+{{#if signupSuccess}}
+  <h1 class="c-heading u-centered">Success!</h1>
+  <p class="c-paragraph u-centered">A confirmation email was sent to your account. Click the link in the email to get going!</p>
+  <p class="c-paragraph u-centered">
+    {{#link-to 'login' class='c-link c-link--info'}}Login{{/link-to}}
+  </p>
+{{else}}
+<main class="signup-box wrapper u-center-block">
+  <div class="u-center-block__content">
+    <h1 class="c-heading">Create Account</h1>
+    <form {{action 'signup' on='submit'}}>
+      <div class="o-form-element">
+        <div class="o-field o-field--icon-left o-field--icon-right">
+          <i class="fa fa-fw fa-user c-icon"></i>
+          {{input type="email" id='email' class='c-field' placeholder='Email Address' value=model.email}}
+        </div>
+      </div>
+      <div class="o-form-element">
+        <div class="c-input-group c-input-group--stacked">
+          <div class="o-field o-field--icon-left o-field--icon-right">
+            <i class="fa fa-fw fa-lock c-icon"></i>
+            {{input id='password' class='c-field' placeholder='Enter Password' type='password' value=model.password}}
+          </div>
+          <div class="o-field o-field--icon-left o-field--icon-right">
+            <i class="fa fa-fw fa-lock c-icon"></i>
+            {{input id='password_confirmation' class='c-field' placeholder='Confirm Password' type='password' value=model.password_confirmation}}
+          </div>
+        </div>
+      </div>
+      <div class="o-form-element">
+        <button class="c-button c-button--brand c-button--block" type="submit">Sign up</button>
+      </div>
+      <p class="c-paragraph u-centered">
+        {{#link-to 'login' class='c-link c-link--info'}}Login instead{{/link-to}}
+      </p>
+      {{#if errorMessage}}
+        <div local-class="errors">
+          <div class="u-centered u-color-error">{{errorMessage}}</div>
+        </div>
+      {{/if}}
+    </form>
+  </div>
+</main>
+{{/if}}

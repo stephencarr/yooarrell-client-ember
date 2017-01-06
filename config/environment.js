@@ -21,6 +21,7 @@ module.exports = function(environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
     },
+    clientUrl: 'https://yooarrell.com',
     apiUrl: 'https://api.yooarrell.com/v1/',
     apiHost: 'https://api.yooarrell.com',
     apiNamespace: 'v1',
@@ -36,6 +37,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.clientUrl = 'http://localhost:4200',
     ENV.apiUrl = 'http://api.yooarrell.dev/v1/';
     ENV.apiHost = 'http://api.yooarrell.dev';
     ENV.apiNamespace = 'v1';

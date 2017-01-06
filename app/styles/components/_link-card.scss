@@ -1,5 +1,6 @@
 .link-card-wrap {
   position: relative;
+
   .link-button-delete {
     position: absolute;
     left: -0.8em;
@@ -10,36 +11,43 @@
     height: 2em;
     line-height: 1em;
   }
+
   &.hovered {
     .link-button-delete {
       display: inherit;
     }
   }
+
   .link-card {
     cursor: pointer;
     position: relative;
+
     .subheading {
-      white-space: nowrap;
+      min-width: 0;
       overflow: hidden;
       text-overflow: ellipsis;
-      min-width: 0;
+      white-space: nowrap;
     }
+
     .o-media__image {
       height: 5em;
       width: 5em;
       border-radius: 5px;
       background-repeat: no-repeat;
       background-position: center;
-      background-size:cover;
+      background-size: cover;
+
       img {
         display: none;
       }
     }
+
     .c-heading__sub .c-avatar {
-      top: 0.3em;
-      width: 1.5em;
-      height: 1.5em;
+      background-color: #fff;
       display: inline-block;
+      height: 1.5em;
+      top: .3em;
+      width: .5em;
     }
   }
 }

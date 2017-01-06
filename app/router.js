@@ -8,6 +8,7 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('login');
+  this.route('signup');
   this.route('links', function() {
     this.route('show', { path: '/:links_id' });
     this.route('create');
