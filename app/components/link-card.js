@@ -27,8 +27,4 @@ const LinkCardComponent = Ember.Component.extend({
   }
 });
 
-LinkCardComponent.reopenClass({
-  positionalParams: ['title', 'url', 'description', 'image_og', 'image_fav']
-});
-
 export default LinkCardComponent;
