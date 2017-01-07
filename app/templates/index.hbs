@@ -1,1 +1,8 @@
-{{link-list links=model}}
+<h1 class="c-title">Welcome</h1>
+<p class="c-paragraph">To get going drag this link to your bookmark bar</p>
+<a class="c-link c-link--info" href="javascript:void(open('https://yooarrell.com'+'/links/create?url=' + encodeURIComponent(window.location.href),'targetname','height=500,width=500'))">Stash Tab</a>
+{{#if model}}
+  {{link-list links=model titleText="Latest Stashed Tabs"}}
+{{else}}
+  <h3 class="c-title">No stashed tabs yet</h3>
+{{/if}}

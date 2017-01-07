@@ -1,11 +1,13 @@
-{{#if model.title model.url}}
+{{#if model.url}}
   {{#hold-button delay:2000 class="link-button-delete" type="trash-circle" action=(action "destroy" model bubbles=false)}}
     <i class="fa fa-trash"></i>
   {{/hold-button}}
   <div class="link-card c-card {{if isHover 'u-high'}}" {{action "linkOut" model bubbles=false}}>
     <div class="c-card__item o-media">
       <div class="o-media__body">
-        <h2 class="c-heading">{{ember-inline-edit value=model.title}}</h2>
+        {{#if model.title}}
+          <h2 class="c-heading">{{ember-inline-edit value=model.title}}</h2>
+        {{/if}}
         <h3 class="c-heading__sub">
           {{#if model.image_fav}}
           <span class="c-avatar c-avatar u-xsmall">
@@ -14,7 +16,9 @@
           {{/if}}
           {{model.url_host}}
         </h3>
-        <p class="c-paragraph">{{model.description}}</p>
+        {{#if model.description}}
+          <p class="c-paragraph">{{model.description}}</p>
+        {{/if}}
       </div>
       {{#if model.image_og}}
       <div class="o-media__image" style="background-image: url('{{model.image_og}}')">

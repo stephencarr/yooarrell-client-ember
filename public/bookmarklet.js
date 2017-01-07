@@ -17,3 +17,5 @@
   node.src = window.location.protocol + '//yooarrell.com/bookmark.html?url=' + encodeURIComponent(window.location.href);
   document.body.appendChild(node)
 })(window.jQuery);
+
+javascript:void(open('https://yooarrell.com/bookmark.html?url=' + encodeURIComponent(window.location.href),'targetname','height=500,width=500'))

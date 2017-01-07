@@ -1,1 +1,5 @@
-{{link-list links=model}}
+{{#if model}}
+  {{link-list links=model titleText="Your Stashed Tabs"}}
+{{else}}
+  <h1 class="c-title">No stashed tabs yet</h1>
+{{/if}}

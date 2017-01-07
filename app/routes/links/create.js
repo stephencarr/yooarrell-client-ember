@@ -6,10 +6,12 @@ export default Ember.Route.extend({
       let store = this.get('store');
       let link = store.createRecord('link', {
         url: params.url,
-        title: 'Fetching...'
+        title: 'Fetching...',
+        description: 'Hang on a minute, we\'re figuring this out'
       });
       link.save().then(function(){
-        link.store.findAll('link')
+        link.store.findAll('link');
+        this.transitionTo('links');
       }).catch(function() {
         link.rollbackAttributes();
         // TODO transition to `/links`
