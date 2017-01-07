@@ -35,7 +35,6 @@ export default Ember.Component.extend({
         let data = User.serialize();
         this.makeRequest(data).then((response) => {
           if (response.ok) {
-            const authenticator = 'authenticator:devise';
             this.set('signupSuccess', true);
           } else {
             if (useResponse) {

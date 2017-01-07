@@ -1,7 +1,9 @@
 <h1 class="c-heading">Your Stashed Tabs</h1>
 <div class="links">
   {{#each sortedLinks as |link|}}
-    {{link-card model=link}}
+    {{#unless link.isDeleted}}
+      {{link-card model=link}}
+    {{/unless}}
   {{/each}}
 </div>
 {{outlet}}

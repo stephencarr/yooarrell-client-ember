@@ -1,26 +1,26 @@
 {{#if model.title model.url}}
-{{#hold-button delay:2000 class="link-button-delete" type="trash-circle" action=(action "destroy" model bubbles=false)}}
-  <i class="fa fa-trash"></i>
-{{/hold-button}}
-<div class="link-card c-card {{if isHover 'u-high'}}" {{action "linkOut" model bubbles=false}}>
-  <div class="c-card__item o-media">
-    <div class="o-media__body">
-      <h2 class="c-heading">{{ember-inline-edit value=model.title}}</h2>
-      <h3 class="c-heading__sub">
-        {{#if model.image_fav}}
-        <span class="c-avatar c-avatar u-xsmall">
-          <img class="c-avatar__img" src="{{model.image_fav}}">
-        </span>
-        {{/if}}
-        {{model.url_host}}
-      </h3>
-      <p class="c-paragraph">{{model.description}}</p>
+  {{#hold-button delay:2000 class="link-button-delete" type="trash-circle" action=(action "destroy" model bubbles=false)}}
+    <i class="fa fa-trash"></i>
+  {{/hold-button}}
+  <div class="link-card c-card {{if isHover 'u-high'}}" {{action "linkOut" model bubbles=false}}>
+    <div class="c-card__item o-media">
+      <div class="o-media__body">
+        <h2 class="c-heading">{{ember-inline-edit value=model.title}}</h2>
+        <h3 class="c-heading__sub">
+          {{#if model.image_fav}}
+          <span class="c-avatar c-avatar u-xsmall">
+            <img class="c-avatar__img" src="{{model.image_fav}}">
+          </span>
+          {{/if}}
+          {{model.url_host}}
+        </h3>
+        <p class="c-paragraph">{{model.description}}</p>
+      </div>
+      {{#if model.image_og}}
+      <div class="o-media__image" style="background-image: url('{{model.image_og}}')">
+        <img class="o-image" src="{{model.image_og}}"/>
+      </div>
+      {{/if}}
     </div>
-    {{#if model.image_og}}
-    <div class="o-media__image" style="background-image: url('{{model.image_og}}')">
-      <img class="o-image" src="{{model.image_og}}"/>
-    </div>
-    {{/if}}
   </div>
-</div>
 {{/if}}

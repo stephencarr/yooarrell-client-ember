@@ -19,9 +19,8 @@ const LinkCardComponent = Ember.Component.extend({
       //console.log('click');
       event.preventDefault();
     },
-    destroy: function(link) {
-      link.deleteRecord();
-      link.save();
+    destroy: function(model) {
+      model.destroyRecord();
       return false;
     }
   }

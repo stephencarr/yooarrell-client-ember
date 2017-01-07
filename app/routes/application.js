@@ -39,20 +39,5 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
       'errors': resp.errors,
       'errorMessage': resp.message
     });
-  },
-  afterModel() {
-    if (!this.get('session').get('isAuthenticated')) {
-      this.transitionTo('login');
-    }
-  },
-  beforeModel() {
-    //return this._loadCurrentUser();
-  },
-  sessionAuthenticated() {
-    this._super(...arguments);
-    //this._loadCurrentUser().then().catch(() => this.get('session').invalidate());
-  },
-  _loadCurrentUser() {
-    return this.get('currentUser').load();
   }
 });
