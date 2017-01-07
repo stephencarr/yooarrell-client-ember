@@ -9,20 +9,16 @@ export default Ember.Route.extend({
         title: 'Fetching...',
         description: 'Hang on a minute, we\'re figuring this out'
       });
-      link.save().then(function(){
+      link.save().then(() => {
         link.store.findAll('link');
-        this.transitionTo('links');
+        this.get('router').transitionTo('links');
       }).catch(function() {
         link.rollbackAttributes();
-        // TODO transition to `/links`
+        this.get('router').transitionTo('links');
       });
     }
   },
-  // willTransition(transition) {
-  //   transition.abort();
-  //   this.get('store').reload();
-  // },
   cancel() {
-    this.transitionTo('links');
+    this.get('router').transitionTo('links');
   }
 });

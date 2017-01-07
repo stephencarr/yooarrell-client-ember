@@ -4,7 +4,7 @@ const LinkCardComponent = Ember.Component.extend({
   classNames: ['link-card-wrap u-letter-box--medium'],
   classNameBindings: ['isHover:hovered'],
   isHover: false,
-  click: function(event) {
+  click: function() {
     //
   },
   mouseEnter: function() {
@@ -16,7 +16,6 @@ const LinkCardComponent = Ember.Component.extend({
   actions: {
     linkOut: function(link){
       window.open(link.get('url'));
-      //console.log('click');
       event.preventDefault();
     },
     destroy: function(model) {

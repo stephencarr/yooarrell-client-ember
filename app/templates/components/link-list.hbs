@@ -1,8 +1,15 @@
 <h1 class="c-heading">{{titleText}}</h1>
 <div class="links">
+  {{#each links as |link|}}
+    {{#if link.isNew}}
+      {{link-card model=link}}
+    {{/if}}
+  {{/each}}
   {{#each sortedLinks as |link|}}
     {{#unless link.isDeleted}}
+    {{#unless link.isNew}}
       {{link-card model=link}}
+    {{/unless}}
     {{/unless}}
   {{/each}}
 </div>
